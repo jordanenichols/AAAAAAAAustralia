@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import DataSet from "./DataSet"
 import GraphSelection from "./GraphSelection"
 import {CSVLink} from "react-csv";
@@ -13,7 +13,7 @@ function ToolBar(props) {
       <GraphSelection 
         graphSelection={props.graphSelection}
         setGraphSelection={props.setGraphSelection}/>
-        <CSVLink data={props.dataSet}>yuh</CSVLink>
+        <CSVLink onClick ={() => {props.setIsPlaying(true)}} data={props.dataSet}>yuh</CSVLink>
     </div>
     
   );
