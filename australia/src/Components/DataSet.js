@@ -11,54 +11,12 @@ function toDataSet(props,event,row,col) {
 function DataSet(props) {
     return (
     <div className = "dad">
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 1, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 1, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 2, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 2, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 3, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 3, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 4, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 4, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 5, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 5, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 6, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 6, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 7, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 7, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 8, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 8, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 9, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 9, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 10, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 10, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 11, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 11, 1)} className="y"/>
-      </div>
-      <div className = "input">
-        <input onChange={(event) => toDataSet(props, event, 12, 0)} className="x"/>
-        <input onChange={(event) => toDataSet(props, event, 12, 1)} className="y"/>
-      </div>
+      {props.dataSet.map(i => {
+              return  <div>
+                <input onChange={(event) => toDataSet(props, event, i, 0)} className="x"/>
+                <input onChange={(event) => toDataSet(props, event, i, 1)} className="y"/>
+              </div>
+            })}
     </div>
   );
 }
