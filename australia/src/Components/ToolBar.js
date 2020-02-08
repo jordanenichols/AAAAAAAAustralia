@@ -1,9 +1,17 @@
-import React, {useState}  from 'react';
+import React from 'react';
 import DataSet from "./DataSet"
 import GraphSelection from "./GraphSelection"
 import {CSVLink} from "react-csv";
 
-
+function generateJSON(props) {
+  let i = 0;
+  let dict = {"data": props.dataSet,
+              "pitchInterval": props.pitchLevel,
+              "duration": props.duration,
+              "graph": props.graphSelection};
+  console.log(JSON.stringify(dict))
+  return JSON.stringify(dict);
+}
 function ToolBar(props) {
   return (
     <div>
@@ -12,11 +20,14 @@ function ToolBar(props) {
         setDataSet={props.setDataSet} 
         pitchLevel = {props.pitchLevel}
         setPitchLevel = {props.setPitchLevel}
+        duration = {props.duration}
+        setDuration = {props.setDuration}
         />
       <GraphSelection 
         graphSelection={props.graphSelection}
         setGraphSelection={props.setGraphSelection}/>
         <CSVLink onClick ={() => {props.setIsPlaying(true)}} data={props.dataSet}>yuh</CSVLink>
+      <button onClick = {() => generateJSON(props)}>PLAY</button>
     </div>
     
   );

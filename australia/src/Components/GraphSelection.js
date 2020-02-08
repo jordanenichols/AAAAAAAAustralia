@@ -3,7 +3,12 @@ import React from 'react';
 
 function GraphSelection(props) {
   return (
-    <div>Hello World-GraphSelection!</div>
+    <div>
+      <button id="line" onClick={()=>{props.setGraphSelection("line")}}>Line Graph</button>
+      <button id="pie" onClick={()=>{props.setGraphSelection("pie")}}>Pie Chart</button>
+      <button id="scatter" onClick={()=>{props.setGraphSelection("scatter")}}>Scatter Plot</button>
+      <button id="bar" onClick={()=>{props.setGraphSelection("line")}}>Bar Graph</button>
+    </div>
   );
 }
 
