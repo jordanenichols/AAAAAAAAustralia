@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import ToolBar from './Components/ToolBar';
+import Graph from './Components/Graph';
 
 function App() {
+  const [dataSet, setDataSet] = useState(null)
+  const [graphSelection, setGraphSelection] = useState(null)
+  const [isPlaying, setIsPlaying] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ToolBar 
+        dataSet={dataSet} 
+        setDataSet={setDataSet} 
+        graphSelection={graphSelection}
+        setGraphSelection={setGraphSelection}
+        />
+      <Graph
+        dataSet={dataSet}
+        graphSelection={graphSelection}
+      />
     </div>
   );
 }
