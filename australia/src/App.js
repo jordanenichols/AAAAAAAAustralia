@@ -7,6 +7,7 @@ function App() {
   const [dataSet, setDataSet] = useState([["jan",400], ["feb", 372], ["mar", 609], ["apr", 513], ["may", 212], ["jun", 274], ["jul", 237], ["aug", 316], ["sep", 399], ["oct", 486], ["nov", 39], ["dec", 455]])
   const [graphSelection, setGraphSelection] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [pitchLevel, setPitchLevel] = useState([0,0]);
   return (
     <div className = "App">
       <ToolBar 
@@ -16,6 +17,8 @@ function App() {
         setGraphSelection={setGraphSelection}
         isPlaying = {isPlaying}
         setIsPlaying = {setIsPlaying}
+        pitchLevel = {pitchLevel}
+        setPitchLevel = {setPitchLevel}
         />
       <Graph
         dataSet={dataSet}

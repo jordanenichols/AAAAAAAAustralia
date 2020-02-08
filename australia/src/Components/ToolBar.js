@@ -9,7 +9,10 @@ function ToolBar(props) {
     <div>
       <DataSet 
         dataSet = {props.dataSet}
-        setDataSet={props.setDataSet} />
+        setDataSet={props.setDataSet} 
+        pitchLevel = {props.pitchLevel}
+        setPitchLevel = {props.setPitchLevel}
+        />
       <GraphSelection 
         graphSelection={props.graphSelection}
         setGraphSelection={props.setGraphSelection}/>

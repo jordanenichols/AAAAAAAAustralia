@@ -8,6 +8,13 @@ function toDataSet(props,event,row,col) {
   props.setDataSet(arr)
   console.log("after calling toDataSet",props.dataSet)
 }
+
+function toPitchLevel(props, event, bound) {
+  let input = event.target.value;
+  let arr = props.pitchLevel;
+  arr[bound] = input;
+  props.setPitchLevel(arr);
+}
 function DataSet(props) {
     return (
     <div className = "dad">
@@ -17,7 +24,10 @@ function DataSet(props) {
                 <input onChange={(event) => toDataSet(props, event, i, 1)} className="y"/>
               </div>
             })}
+            <input onChange={(event) => toPitchLevel(props, event, 0)} className="lower"/>
+            <input onChange={(event) => toPitchLevel(props, event, 1)} className="upper"/>
     </div>
+      
   );
 }
 
