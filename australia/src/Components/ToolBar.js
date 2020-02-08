@@ -1,6 +1,7 @@
 import React from 'react';
 import DataSet from "./DataSet"
 import GraphSelection from "./GraphSelection"
+import {CSVLink} from "react-csv";
 
 
 function ToolBar(props) {
@@ -12,7 +13,9 @@ function ToolBar(props) {
       <GraphSelection 
         graphSelection={props.graphSelection}
         setGraphSelection={props.setGraphSelection}/>
+        <CSVLink data={props.dataSet}>yuh</CSVLink>
     </div>
+    
   );
 }
 
