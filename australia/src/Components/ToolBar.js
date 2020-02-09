@@ -1,20 +1,7 @@
 import React from 'react';
 import DataSet from "./DataSet"
 import GraphSelection from "./GraphSelection"
-import main from "../../../foo.js"
-function processData(props){
-  let data = generateJSON(props);
-  main()
-  
-}
 
-function generateJSON(props) {
-  let dict = {"data": props.dataSet,
-              "pitchInterval": props.pitchLevel,
-              "duration": props.duration,
-              "graph": props.graphSelection};
-  return JSON.stringify(dict);
-}
 
 function ToolBar(props) {
   return (
@@ -32,7 +19,7 @@ function ToolBar(props) {
       <GraphSelection 
         graphSelection={props.graphSelection}
         setGraphSelection={props.setGraphSelection}/>
-      <button onClick = {() => processData(props)}>PLAY</button>
+      <button onClick = {() => props.processData(props)}>PLAY</button>
     </div>
     
   );
