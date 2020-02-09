@@ -1,10 +1,13 @@
 import React from 'react';
 import LineGraph from './LineGraph'
+import '../App.css';
 
 function Graph(props) {
   return (
-    <div>
-      <LineGraph></LineGraph>
+    <div className="graph">
+      <LineGraph
+        jsonString = {props.jsonString}
+      />
       </div>
   );
 }

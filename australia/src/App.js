@@ -9,7 +9,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [pitchLevel, setPitchLevel] = useState([0,0]);
   const [duration,setDuration] = useState(3);
-  const [jsonString,setJSON] = useState();
+  const [jsonString,setJSON] = useState("");
   return (
     <div className = "App">
       <ToolBar 
@@ -30,6 +30,7 @@ function App() {
         graphSelection={graphSelection}
         isPlaying = {isPlaying}
         setIsPlaying = {setIsPlaying}
+        jsonString = {jsonString}
       />
 
     </div>
@@ -44,7 +45,7 @@ function App() {
                 "pitchInterval": pitchLevel,
                 "duration": duration,
                 "graph": graphSelection};
-    setJSON(JSON.stringify(dict))
+    setJSON(JSON.stringify(dict).data)
     console.log(jsonString)
     return JSON.stringify(dict);
   }

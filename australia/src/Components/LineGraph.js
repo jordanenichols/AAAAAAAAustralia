@@ -1,16 +1,75 @@
 import React from 'react';
  import { ResponsiveLine } from '@nivo/line'
 
+function toGraphJSON(jsonString) {
+    let dict = [];
+    //  for(){
+    //     console.log(jsonString)
+    //     dict.push(["x",jsonString[0][0]]["y",jsonString[0][1]])
+    //  }
+    return ""
+}
+
 function LineGraph(props) {
+    let dat1 = toGraphJSON(props.jsonString)
+    let dat =
+  [
+    {
+      "data": [
+        {
+          "x": "plane",
+          "y": 18
+        },
+        {
+          "x": "helicopter",
+          "y": 13
+        },
+        {
+          "x": "boat",
+          "y": 273
+        },
+        {
+          "x": "train",
+          "y": 17
+        },
+        {
+          "x": "subway",
+          "y": 112
+        },
+        {
+          "x": "bus",
+          "y": 278
+        },
+        {
+          "x": "car",
+          "y": 47
+        },
+        {
+          "x": "moto",
+          "y": 281
+        },
+        {
+          "x": "bicycle",
+          "y": 213
+        },
+        {
+          "x": "horse",
+          "y": 235
+        },
+        {
+          "x": "skateboard",
+          "y": 253
+        },
+        {
+          "x": "others",
+          "y": 154
+        }
+      ]
+    },
+    ]
   return (
-   
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
         <ResponsiveLine
-            // data={data}
+            data={dat}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
             xScale={{ type: 'point' }}
             yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
