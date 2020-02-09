@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import './App.css';
 import ToolBar from './Components/ToolBar';
 import Graph from './Components/Graph';
+import { doEverything } from './Components/sound';
 
 function App() {
-  const [dataSet, setDataSet] = useState([["",0]])
-  const [graphSelection, setGraphSelection] = useState(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [dataSet, setDataSet] = useState({"x":[], "y":[]});
+  const [graphSelection, setGraphSelection] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [pitchLevel, setPitchLevel] = useState([0,0]);
   const [duration,setDuration] = useState(3);
   const [jsonString,setJSON] = useState("");
@@ -36,18 +37,24 @@ function App() {
     </div>
   );
   function processData(){
-    let data = generateJSON();
+    
+    // console.log("hello! I pass data,", data);
+    doEverything(generateJSON());
     
   }
   
   function generateJSON() {
+    console.log("REEEE",dataSet);
+    
     let dict = {"data": dataSet,
+                "x":dataSet.x,
+                "y":dataSet.y,
                 "pitchInterval": pitchLevel,
                 "duration": duration,
                 "graph": graphSelection};
-    setJSON(JSON.stringify(dict).data)
-    console.log(jsonString)
-    return JSON.stringify(dict);
+    console.log("I am a dichead", dict);
+    console.log("am i the same?", dict);
+    return dict;
   }
 }
 

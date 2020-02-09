@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
-function toDataSet(props,event,row,col) {
-  console.log("row: ",row);
-  console.log("col",col);
-  let daddy = event.target.value;
-  console.log("before ",props.dataSet)
-  let arr = props.dataSet
-  if (col == 1) {
-    arr[row][col] = parseInt(daddy, 10);
+function toDataSet(props,event, row, col) {
+  // console.log("row: ",row);
+  // console.log("col: ",col);
+  const currentTextBox = event.target;
+  const currentVal = currentTextBox.value;
+  // update contents of dataSet
+  if(col=="x"){
+    props.dataSet.x[row] = currentVal;
   } else {
-    arr[row][col] = daddy
+    props.dataSet.y[row] = currentVal;
   }
-  props.setDataSet(arr)
+  props.setDataSet({"x":props.dataSet.x, "y":props.dataSet.y});
+
   console.log("after calling toDataSet",props.dataSet)
 }
 
@@ -20,7 +21,7 @@ function toPitchLevel(props, event, bound) {
   let arr = props.pitchLevel;
   arr[bound] = input;
   props.setPitchLevel(arr);
-  console.log(props.pitchLevel)
+  console.log("dis the pitch",props.pitchLevel)
 }
 
 function toDuration(props, event) {
@@ -30,26 +31,31 @@ function toDuration(props, event) {
 }
 function appendDataSet(props) {
   let current = props.dataSet;
-  current.push(["",0]);
+  console.log("dis what we workin with", current);
+  current.x.push("woo");
+  current.y.push(97);
   props.setDataSet(current);
-  console.log(props.dataSet);
+}
+
+function dataRows(props) {
+  return props.dataSet.x.map((i,row) =>  
+    <div>
+       <input className="inputBox" data-name="x" onChange={(event) => toDataSet(props, event, row, "x")} />
+       <input className="inputBox" data-name="y" onChange={(event) => toDataSet(props, event, row, "y")} />
+     </div>
+   );
 }
 function DataSet(props) {
-    const [value, setValue] = useState(false);
+    const [value, setValue] = useState(0);
     return (
     <div className = "inputField">
       <div className="DataSet">
-          {props.dataSet.map((i,index) => {
-              return  <div>
-                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 0)} />
-                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 1)} />
-              </div>
-            })}
+          {dataRows(props)}
       </div>
       <button key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
       <div className="pitchBox">
-        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 0)}/>
-        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 1)}/>
+        <input className="inputBox"  onChange={(event) => toPitchLevel(props, event, 0)}/>
+        <input className="inputBox"  onChange={(event) => toPitchLevel(props, event, 1)}/>
         </div>
         <label>Duration:
           <input onChange={(event) => toDuration(props, event)} className="duration"/>
