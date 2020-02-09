@@ -10,6 +10,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [pitchLevel, setPitchLevel] = useState([0,0]);
   const [duration,setDuration] = useState(3);
+  const [jsonString,setJSON] = useState();
   return (
     <div className = "App">
       <ToolBar 
