@@ -17,27 +17,21 @@ let sine = new Tone.Oscillator(440, "sine").toMaster();
 
 
 function eventCallback(time) {
-  // console.log(time);
   sine.frequency.setValueAtTime(0, time);
   sine.start(time);
   let data = assign_hertz(parseInt(jsonObj.pitchInterval[0],10), parseInt(jsonObj.pitchInterval[1],10), jsonObj.data, jsonObj.duration);
-  console.log("YO BUTCH", data);
-  
-  
+  console.log("YO THIS THE ONE?", data);  
   for (let i = 0; i < data.hertz.length; i++) {
-    
-    sine.frequency.linearRampToValueAtTime(data.hertz[i], time+1/data.hertz.length);
+
+    sine.frequency.linearRampToValueAtTime(data.hertz[i], time+data.times[i]);
   }
   sine.stop(time + jsonObj.duration);
 }
 let event = new Tone.Event(eventCallback).start();
 let buttonOn = false;
 
-
 export function doEverything(obj) {
-
   jsonObj = JSON.parse(JSON.stringify(obj));
-
   if (buttonOn) {
     sine.stop();
     buttonOn = false;
@@ -64,27 +58,34 @@ function percentify_data(data) {
   console.log("SUM:", sum);
   for (let i = 0; i < newData.y.length; i++) {
     newData.percentages.push(parseInt(newData.y[i],10) / sum);
-    // if (i > 0) {
-    //   newData.y[i] = (time * newData.y[i] + newData.y[i - 1]);
-    // }
-    // else {
-    //   // console.log(newData[i][1] * time)
-    //   console.log("NEWWWW DATA", newData.y[i]);
-    //   newData.y[i] = (time * newData.y[i]);
-    // }
   }
   return newData;
 }
 
 
-function calculateTimes(data, timeTotal) {
-  const newData = JSON.parse(JSON.stringify(data));
-  newData.times = [];
-  for (let i = 0; i<newData.percentages; i++) {
-
+function getTimes(data) {
+  let [min, max] = findMinMaxX(data)
+  let interval = max - min;
+  data.times = [];
+  for(let i = 0; i < data.x.length; i++) {
+    data.times.push((parseFloat(data.x[i], 10) / interval) * parseFloat(jsonObj.duration, 10));
   }
+  return data;
 }
 
+function findMinMaxX(data) {
+  let min = data.x[0];
+  let max = data.x[0];
+  for (let i = 0; i < data.x.length; i++) { //problem if data has only one value
+    if (max < data.x[i]) { // gets the maximum
+      max = data.x[i];
+    }
+    if (min > data.x[i]) {
+      min = data.x[i];
+    }
+  }
+  return [parseFloat(min,10), parseFloat(max,10)];
+}
 
 //Finds a minimum and maximum value from .csv file
 function find_min_and_max(data) {
@@ -131,8 +132,9 @@ function assign_hertz(minHz, maxHz, data, time) {
     let final = (minHz + (diff * frac))
     percentified_data.hertz.push(final);
   }
-  console.log("AKK", percentified_data);
-  return percentified_data;
+  let timed_data = getTimes(percentified_data);
+  console.log("AKK", timed_data);
+  return timed_data;
 }
 
 
