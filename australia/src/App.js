@@ -4,7 +4,11 @@ import ToolBar from './Components/ToolBar';
 import Graph from './Components/Graph';
 
 function App() {
+<<<<<<< HEAD
   const [dataSet, setDataSet] = useState([["",0]])
+=======
+  const [dataSet, setDataSet] = useState([["",""]])
+>>>>>>> 0cbc58998984feb502766a6a335ff23e8497ba5d
   const [graphSelection, setGraphSelection] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [pitchLevel, setPitchLevel] = useState([0,0]);
@@ -29,6 +33,7 @@ function App() {
         isPlaying = {isPlaying}
         setIsPlaying = {setIsPlaying}
       />
+      
     </div>
   );
 }
