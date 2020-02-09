@@ -149,6 +149,7 @@ input {
 
 .playButton {
   border: none;
+  align-self: center;
 width: 60%;
 padding: 10px;
 
