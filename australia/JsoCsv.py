@@ -4,9 +4,13 @@ import argparse
 from pprint import pprint
 
 
-parser = argparse.ArgumentParser(description='Convert a CSV to JSON.')
-parser.add_argument('--file', type=str, help='The filename you want converted')
-args = parser.parse_args()
+#parser = argparse.ArgumentParser(description='Convert a CSV to JSON.')
+#parser.add_argument('--file', type=str, help='The filename you want converted')
+#args = parser.parse_args()
+
+
+
+
 
 
 """
@@ -22,6 +26,27 @@ def convert_to_csv_from_json(json_file, output_file):
             for d in j["data"]:
                 csv_writer.writerow(d)
 
-convert_to_csv_from_json(args.file, args.file.replace("json", "csv"))
 
 #python3 JsoCsv.py --file test.json
+
+
+
+
+
+import zmq
+import os
+
+
+context = zmq.Context()
+socket = context.socket(zmq.REP)
+socket.bind("tcp://*:5555")
+
+while True:
+    #  Wait for next request from client
+    message = socket.recv()
+    convert_to_csv_from_json("/Users/williamkopans/json_playing/data.json", "./data.csv")
+    os.system("Rscript ShinyPNG.R")
+
+    #  Send reply back to client
+    socket.send(b"Work done")
+
