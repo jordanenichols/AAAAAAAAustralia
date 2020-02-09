@@ -6,11 +6,11 @@ import { doEverything } from './Components/sound';
 
 function App() {
   const [dataSet, setDataSet] = useState({"x":[], "y":[]});
-  const [graphSelection, setGraphSelection] = useState(null);
+  const [graphSelection, setGraphSelection] = useState("bar");
   const [isPlaying, setIsPlaying] = useState(false);
   const [pitchLevel, setPitchLevel] = useState([0,0]);
   const [duration,setDuration] = useState(3);
-  const [jsonString,setJSON] = useState("");
+  const [jsonString,setJSON] = useState({"x":[], "y":[]});
   return (
     <div className = "App">
       <ToolBar 
@@ -54,6 +54,7 @@ function App() {
                 "graph": graphSelection};
     console.log("I am a dichead", dict);
     console.log("am i the same?", dict);
+    setJSON(dict.data);
     return dict;
   }
 }
