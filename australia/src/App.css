@@ -9,7 +9,6 @@ body {
   display: block;
 }
 .toolBar {
-  background-color: #2e2d32;
   width: 20vw;
   height: 96vh;
   margin: 2vh;
@@ -18,42 +17,40 @@ body {
 }
 
 .inputField {
-  position: relative;
-  width: 15vw;
-  height: 2vw;
-  margin: 0 auto;
-  padding: 6px;
-  text-align: center;
-  background-color: #3d3d47;
-  border-bottom: 3px solid whitesmoke;
-  margin-bottom: 10px;
+  
 }
 .DataSet {
-  min-height: 200px;
-  max-height: 200px;
+  max-height: 150px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end;
+  align-content: flex-end;  */
   overflow-y: auto;
 }
+
+.DataSet div {
+  display: flex;
+  justify-content: center;
+  min-height: 15px;
+  margin: 6px 0;
+}
+
 .inputBox {
-  border: none;
-  width: 3vw;
+  height: 20px;
+  font-size: 16px;
+  width: 40%;
   background-color: #3d3d47;
-  
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-top: 25px;
+  border-radius: 5px;
+  border: none;
+  margin: 4px;
+
 }
 .pitchBox {
-  display: flex;
-  justify-content: right;
-  margin-right: 4vw;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
   
 }
 
 .pitchBox .inputBox {
-  width: 3vw;
-  margin: 5px;
   text-align: center;
   background-color: #3d3d47;
   border: none;

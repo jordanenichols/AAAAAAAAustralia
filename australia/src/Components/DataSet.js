@@ -41,19 +41,19 @@ function DataSet(props) {
       <div className="DataSet">
           {props.dataSet.map((i,index) => {
               return  <div>
-                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 0)} className="x"/>
-                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 1)} className="y"/>
+                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 0)} />
+                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 1)} />
               </div>
             })}
       </div>
+      <button key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
       <div className="pitchBox">
-        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 0)} className="lower"/>
-        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 1)} className="upper"/>
+        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 0)}/>
+        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 1)}/>
         </div>
         <label>Duration:
           <input onChange={(event) => toDuration(props, event)} className="duration"/>
         </label>
-        <button key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
     </div>
       
   );
