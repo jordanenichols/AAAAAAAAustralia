@@ -22,6 +22,7 @@ function App() {
         setPitchLevel = {setPitchLevel}
         duration = {duration}
         setDuration = {setDuration}
+        processData = {processData}
         />
       <Graph
         dataSet={dataSet}
@@ -29,10 +30,23 @@ function App() {
         isPlaying = {isPlaying}
         setIsPlaying = {setIsPlaying}
       />
-      
+
     </div>
   );
+  function processData(){
+    let data = generateJSON();
+    
+  }
+  
+  function generateJSON() {
+    let dict = {"data": dataSet,
+                "pitchInterval": pitchLevel,
+                "duration": duration,
+                "graph": graphSelection};
+    return JSON.stringify(dict);
+  }
 }
+
 
 export default App;
 

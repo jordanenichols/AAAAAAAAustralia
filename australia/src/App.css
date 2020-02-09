@@ -1,9 +1,14 @@
 body {
   background-color: #27282d;
 }
-
-#toolBar {
-  background-color: #2e2d32;
+.logo {
+  width: 17vw;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.toolBar {
   width: 20vw;
   height: 96vh;
   margin: 2vh;
@@ -11,54 +16,41 @@ body {
   box-shadow: 5px 5px 15px #1e1d20;
 }
 
-#outerInputBox {
-  position: relative;
-  width: 15vw;
-  height: 2vw;
-  margin: 0 auto;
-  padding: 6px;
-  text-align: center;
-  background-color: #3d3d47;
-  border-bottom: 3px solid whitesmoke;
-  margin-bottom: 10px;
+.inputField {
+  
 }
-#inputWrapper {
-  min-height: 200px;
-}
-#outerInputBoxWrapper {
-  max-height: 200px;
+.DataSet {
+  max-height: 150px;
   overflow-y: auto;
-  
-}
-#inputBox {
-  border: none;
-  width: 3vw;
-  background-color: #3d3d47;
-  
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-top: 25px;
-}
-#logo {
-  width: 17vw;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-#pitchBoxWrapper {
   display: flex;
-  justify-content: right;
-  margin-right: 4vw;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  flex-direction: column;
+  /* justify-content: flex-end;
+  align-content: flex-end;  */
+  overflow-y: auto;
+}
+
+.DataSet div {
+  display: flex;
+  justify-content: center;
+  min-height: 15px;
+  margin: 6px 0;
+}
+
+.inputBox {
+  height: 20px;
+  font-size: 16px;
+  width: 40%;
+  background-color: #3d3d47;
+  border-radius: 5px;
+  border: none;
+  margin: 4px;
+
+}
+.pitchBox {
   
 }
 
-#pitchBox {
-  width: 3vw;
-  margin: 5px;
+.pitchBox .inputBox {
   text-align: center;
   background-color: #3d3d47;
   border: none;
