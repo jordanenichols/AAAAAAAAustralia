@@ -52,7 +52,7 @@ function DataSet(props) {
       <div className="DataSet">
           {dataRows(props)}
       </div>
-      <button key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
+      <button className="addEntry" key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
       <div className="pitchBox">
         <input className="inputBox"  onChange={(event) => toPitchLevel(props, event, 0)}/>
         <input className="inputBox"  onChange={(event) => toPitchLevel(props, event, 1)}/>
