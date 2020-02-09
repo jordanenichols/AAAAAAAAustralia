@@ -31,7 +31,7 @@ function App() {
         isPlaying = {isPlaying}
         setIsPlaying = {setIsPlaying}
       />
-      
+
     </div>
   );
   function processData(){
@@ -52,3 +52,5 @@ function App() {
 
 
 export default App;
+
+

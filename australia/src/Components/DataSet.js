@@ -37,23 +37,23 @@ function appendDataSet(props) {
 function DataSet(props) {
     const [value, setValue] = useState(false);
     return (
-    <div id="inputWrapper"className = "dad">
-      <div id="outerInputBoxWrapper">
-      {props.dataSet.map((i,index) => {
-              return  <div id="outerInputBox">
-                <input id="inputBox"onChange={(event) => toDataSet(props, event, index, 0)} className="x"/>
-                <input id="inputBox"onChange={(event) => toDataSet(props, event, index, 1)} className="y"/>
+    <div className = "inputField">
+      <div className="DataSet">
+          {props.dataSet.map((i,index) => {
+              return  <div>
+                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 0)} />
+                <input className="inputBox"onChange={(event) => toDataSet(props, event, index, 1)} />
               </div>
             })}
       </div>
-      <div id="pitchBoxWrapper">
-        <input id="pitchBox" onChange={(event) => toPitchLevel(props, event, 0)} className="lower"/>
-        <input id="pitchBox" onChange={(event) => toPitchLevel(props, event, 1)} className="upper"/>
+      <button key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
+      <div className="pitchBox">
+        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 0)}/>
+        <input className="inputBox" onChange={(event) => toPitchLevel(props, event, 1)}/>
         </div>
         <label>Duration:
           <input onChange={(event) => toDuration(props, event)} className="duration"/>
         </label>
-        <button key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
     </div>
       
   );
