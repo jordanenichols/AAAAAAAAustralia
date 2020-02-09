@@ -15,12 +15,13 @@ import * as Tone from "tone";
   
   
   export function playGraph(jsonObj) {
-    Tone.Transport.cancel();
+    Tone.Transport.toggle();
+    // Tone.Transport.cancel();
+    console.log("This One", jsonObj);
     let data = assign_hertz(500, 1200, jsonObj.data, jsonObj.duration);
     for(let i=0; i<data.length; i++){
       osc.frequency.linearRampToValueAtTime(data[i][1], "+"+data[i][2].toString());
     }
-    
   }
   
   //start the transport with an offset and the sync'ed sources
@@ -29,14 +30,14 @@ import * as Tone from "tone";
   //the source will be invoked with an offset of 0.4
   // Tone.Transport.start("+0.5", 0.5);
   //schedule a few notes
-  Tone.Transport.schedule(playGraph, "+0.5");
+  // Tone.Transport.schedule(playGraph, "+0.5");
   
   //start/stop the transport
-  //document.querySelector('tone-play-toggle').addEventListener('change', e => Tone.Transport.toggle())
+  // document.querySelector('tone-play-toggle').addEventListener('change', e => Tone.Transport.toggle())
   
   
   function playData(jsonObj) {
-    // var osc = new Tone.Oscillator(440, "sine").toMaster().start();
+    // let osc = new Tone.Oscillator(440, "sine").toMaster().start();
   
   
   
@@ -50,10 +51,10 @@ import * as Tone from "tone";
       // calculate total
       // another for loop for each data point to and replace with percentage
       let sum = 0;
-      for (var i = 0; i < data.length; i++) {
+      for (let i = 0; i < data.length; i++) {
           sum += data[i][1];
       }
-      for (var x = 0; x < data.length; x++) {
+      for (let x = 0; x < data.length; x++) {
         data[x][1] = (data[x][1] / sum);
           if (x > 0) {
               data[x].push(time * data[x][1] + data[x - 1][2]);
@@ -74,7 +75,7 @@ import * as Tone from "tone";
     let list = []; //List that arranges the data based on increasing size
     let x = 0;
     let y = 0;
-    for (var i = 1; i < data.length; i++) { //problem if data has only one value
+    for (let i = 1; i < data.length; i++) { //problem if data has only one value
       if (data[x][1] < data[i][1]) { // gets the maximum
         max = data[i][1];
         x = i;
@@ -90,9 +91,9 @@ import * as Tone from "tone";
   
   //Sets the user defined minimum Hertz and maximum Hertz values in the data file
   function assign_hertz(minHz, maxHz, data, time) {
-    var percentified_data = percentify_data(data, time);
-    var percent_min_max = find_min_and_max(percentified_data);
-    for (var i = 0; i < data.length; i++) { //replaces percentified data with hertz values. Problem if data set only length of 2
+    let percentified_data = percentify_data(data, time);
+    let percent_min_max = find_min_and_max(percentified_data);
+    for (let i = 0; i < data.length; i++) { //replaces percentified data with hertz values. Problem if data set only length of 2
       percentified_data[i][1] = minHz + (percentified_data[i][1] - percent_min_max[0]) * ((maxHz - minHz) / (percent_min_max[1] - percent_min_max[0]))
     }
     return percentified_data;

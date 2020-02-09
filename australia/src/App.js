@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import ToolBar from './Components/ToolBar';
 import Graph from './Components/Graph';
+import { playGraph } from './Components/sound';
 
 function App() {
   const [dataSet, setDataSet] = useState([["",0]])
@@ -35,15 +36,19 @@ function App() {
   );
   function processData(){
     let data = generateJSON();
+    console.log(data);
+    playGraph(data);
     
   }
   
   function generateJSON() {
+    console.log(dataSet);
     let dict = {"data": dataSet,
                 "pitchInterval": pitchLevel,
                 "duration": duration,
                 "graph": graphSelection};
-    return JSON.stringify(dict);
+                console.log(dict);
+    return dict;
   }
 }
 

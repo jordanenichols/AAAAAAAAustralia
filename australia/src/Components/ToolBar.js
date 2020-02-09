@@ -1,16 +1,6 @@
 import React from 'react';
 import DataSet from "./DataSet"
 import GraphSelection from "./GraphSelection"
-import {playGraph} from "./sound"
-function processData(props){
-  let data = generateJSON(props);
-  playGraph(data);
-
-// import main from "./foo.js"
-function processData(props){
-  let data = generateJSON(props);
-}
-
 
 function ToolBar(props) {
   return (
