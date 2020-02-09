@@ -6,7 +6,11 @@ function toDataSet(props,event,row,col) {
   let daddy = event.target.value;
   console.log("before ",props.dataSet)
   let arr = props.dataSet
-  arr[row][col] = daddy
+  if (col == 1) {
+    arr[row][col] = parseInt(daddy, 10);
+  } else {
+    arr[row][col] = daddy
+  }
   props.setDataSet(arr)
   console.log("after calling toDataSet",props.dataSet)
 }
@@ -26,26 +30,26 @@ function toDuration(props, event) {
 }
 function appendDataSet(props) {
   let current = props.dataSet;
-  current.push(["",""]);
+  current.push(["",0]);
   props.setDataSet(current);
   console.log(props.dataSet);
 }
 function DataSet(props) {
     const [value, setValue] = useState(false);
     return (
-    <div className = "dad">
+    <div id="inputWrapper"className = "dad">
+      <div id="outerInputBoxWrapper">
       {props.dataSet.map((i,index) => {
-              return  <div>
-                <input onChange={(event) => toDataSet(props, event, index, 0)} className="x"/>
-                <input onChange={(event) => toDataSet(props, event, index, 1)} className="y"/>
+              return  <div id="outerInputBox">
+                <input id="inputBox"onChange={(event) => toDataSet(props, event, index, 0)} className="x"/>
+                <input id="inputBox"onChange={(event) => toDataSet(props, event, index, 1)} className="y"/>
               </div>
             })}
-      <label>Min Pitch:  
-        <input onChange={(event) => toPitchLevel(props, event, 0)} className="lower"/>
-        </label>
-        <label>Max Pitch:  
-        <input onChange={(event) => toPitchLevel(props, event, 1)} className="upper"/>
-        </label>
+      </div>
+      <div id="pitchBoxWrapper">
+        <input id="pitchBox" onChange={(event) => toPitchLevel(props, event, 0)} className="lower"/>
+        <input id="pitchBox" onChange={(event) => toPitchLevel(props, event, 1)} className="upper"/>
+        </div>
         <label>Duration:
           <input onChange={(event) => toDuration(props, event)} className="duration"/>
         </label>
