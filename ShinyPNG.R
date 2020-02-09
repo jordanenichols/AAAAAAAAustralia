@@ -1,61 +1,25 @@
 library(ggfortify)
 library(ggplot2)
 
-Spreadsheet...Sheet1 <- read.csv("~/Downloads/Spreadsheet - Sheet1.csv", header = TRUE)
+Spreadsheet <- read.csv("~/json_playing/data.csv", header = TRUE)
 
-DataS <- Spreadsheet...Sheet1
+DataS <- Spreadsheet
 
-
-ggplot(data = DataS, mapping = aes(x= month, y=children))+
+ggplot(data = DataS, mapping = aes(x= month, y=number))+
   geom_col()+
-  labs(y = "Number of Births ",x="Years")+
-  ggtitle("Births Over The Past 20 Years")
+  labs(y = " ",x="")
 
 ggsave("ColChart.png", path = "/Users/williamkopans/Downloads")
 
-
-summary(Recent)
-
-ggplot(data= Spreadsheet...Sheet1, mapping = aes(x= month,y=children, group = 1))+
+ggplot(data= DataS, mapping = aes(x= month,y=number, year = 1, group = 1))+
   geom_line()+
-  labs(y = "Number of Births ",x="Years")+
-  ggtitle("Births Over The Past 20 Years")
+  labs(y = " ",x="")
 
 ggsave("LineChart.png", path = "/Users/williamkopans/Downloads")
 
-
-
-ggplot(data= Spreadsheet...Sheet1, mapping = aes(x=month,y=children, group = 1))+
+ggplot(data= DataS, mapping = aes(x=month,y=number, year = 1, group = 1))+
   geom_point()+ geom_line()+
-  labs(y = "Number of Births Per Month",x="Years")+
-  ggtitle("Births Over The Past 20 Years")+
+  labs(y = "",x="")+
   geom_smooth(se = FALSE)
 
 ggsave("PointChart.png", path = "/Users/williamkopans/Downloads")
-
-
-
-
-library(rjson)
-
-my.JSON <- fromJSON(file="/Users/williamkopans/data.json")
-
-df <- lapply(my.JSON, function(play) # Loop through each "play"
-{
-  # Convert each group to a data frame.
-  # This assumes you have 6 elements each time
-  data.frame(matrix(unlist(play), ncol=6, byrow=T))
-})
-
-# Now you have a list of data frames, connect them together in
-# one single dataframe
-df <- do.call(rbind, df)
-
-# Make column names nicer, remove row names
-colnames(df) <- names(my.JSON[[1]][[1]])
-rownames(df) <- NULL
-
-
-
-
-
