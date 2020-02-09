@@ -49,11 +49,12 @@ function DataSet(props) {
     const [value, setValue] = useState(0);
     return (
     <div className = "inputField">
-      <label>Inputs: </label>
+      <label className= "durLabel">Inputs: </label>
       <div className="DataSet">
           {dataRows(props)}
       </div>
       <button className="addEntry" key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
+      <label>Min-Max Pitch</label>
       <div className="pitchBox">
         <input placeholder="300" className="inputBox"  onChange={(event) => toPitchLevel(props, event, 0)}/>
         <input placeholder="500" className="inputBox"  onChange={(event) => toPitchLevel(props, event, 1)}/>

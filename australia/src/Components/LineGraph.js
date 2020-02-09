@@ -12,11 +12,10 @@ function toGraphJSON(jsonString) {
 }
 
 function LineGraph(props) {
-    let dat1 = toGraphJSON(props.jsonString)
-
+    let dat = toGraphJSON(props.jsonString)
   return (
         <ResponsiveLine
-            data={dat1}
+            data={dat}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
             xScale={{ type: 'point' }}
             yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
@@ -27,7 +26,6 @@ function LineGraph(props) {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'transportation',
                 legendOffset: 36,
                 legendPosition: 'middle'
             }}
@@ -36,18 +34,13 @@ function LineGraph(props) {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'count',
                 legendOffset: -40,
                 legendPosition: 'middle'
             }}
+            enablePoints = {false}
+            isInteractive = {false}
             colors={{ scheme: 'oranges' }}
-            pointSize={10}
-            pointColor={{ theme: 'background' }}
-            pointBorderWidth={2}
-            pointBorderColor={{ from: 'serieColor' }}
-            pointLabel="y"
-            pointLabelYOffset={-12}
-            useMesh={true}
+            useMesh={false}
         />
   );
 }
