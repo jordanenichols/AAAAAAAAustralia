@@ -1,7 +1,7 @@
 import React from 'react';
  import { ResponsiveLine } from '@nivo/line'
 
-function toGraphJSON(jsonString) {
+ function toGraphJSON(jsonString) {
     console.log(jsonString)
     let dict = [];
     for(let i = 0; i < jsonString.x.length;i++){
@@ -11,10 +11,9 @@ function toGraphJSON(jsonString) {
     return [{"data":dict}]
 }
 
-function LineGraph(props) {
+function PieChart(props) {
     let dat1 = toGraphJSON(props.jsonString)
-
-  return (
+    return (
         <ResponsiveLine
             data={dat1}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -27,7 +26,6 @@ function LineGraph(props) {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'transportation',
                 legendOffset: 36,
                 legendPosition: 'middle'
             }}
@@ -36,7 +34,6 @@ function LineGraph(props) {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'count',
                 legendOffset: -40,
                 legendPosition: 'middle'
             }}
@@ -52,4 +49,4 @@ function LineGraph(props) {
   );
 }
 
-export default LineGraph;
+export default PieChart;
