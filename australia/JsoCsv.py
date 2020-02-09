@@ -2,8 +2,6 @@ import json
 import csv
 import argparse
 from pprint import pprint
-
-
 #parser = argparse.ArgumentParser(description='Convert a CSV to JSON.')
 #parser.add_argument('--file', type=str, help='The filename you want converted')
 #args = parser.parse_args()
