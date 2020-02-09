@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function toDataSet(props,event,row,col) {
   console.log("row: ",row);
@@ -24,7 +24,14 @@ function toDuration(props, event) {
   props.setDuration(input);
   console.log(props.duration);
 }
+function appendDataSet(props) {
+  let current = props.dataSet;
+  current.push(["",""]);
+  props.setDataSet(current);
+  console.log(props.dataSet);
+}
 function DataSet(props) {
+    const [value, setValue] = useState(false);
     return (
     <div className = "dad">
       {props.dataSet.map((i,index) => {
@@ -42,6 +49,7 @@ function DataSet(props) {
         <label>Duration:
           <input onChange={(event) => toDuration(props, event)} className="duration"/>
         </label>
+        <button key={props.dataSet} onClick = {() => {appendDataSet(props); setValue(!value)}}>+</button>
     </div>
       
   );
