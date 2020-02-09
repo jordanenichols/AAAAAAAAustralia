@@ -31,18 +31,14 @@ let buttonOn = false;
 
 export function doEverything(obj) {
   //  console.log("test", jsonObj);
-  console.log("original object in sound.js:", obj);
-  jsonObj = JSON.parse(JSON.stringify(obj));
-  console.log("stringified and parsed object:", jsonObj);
-  console.log("MODIFICATION TEST===================")
-  // jsonObj.x = [];
-  console.log("jsonObj.x = ", jsonObj.x);
-  console.log('obj.x = ', obj.x);
+  
   if (buttonOn) {
+    console.log("yoot")
     sine.stop();
     buttonOn = false;
     Tone.Transport.stop();
   } else {
+    console.log("scoot")
     buttonOn = true;
     Tone.Transport.start();
   }

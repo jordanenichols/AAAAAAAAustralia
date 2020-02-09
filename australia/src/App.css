@@ -77,8 +77,9 @@ justify-content: center
 }
 
 .graph{
-  height: 100vh;;
-  width: 100vw;;
+  height: 98vh;;
+  
+  width: 100%;
 }
 
 .App{
