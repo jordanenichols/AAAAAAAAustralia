@@ -1,9 +1,10 @@
 import React from 'react';
 import DataSet from "./DataSet"
 import GraphSelection from "./GraphSelection"
-
+import main from "../../../foo.js"
 function processData(props){
   let data = generateJSON(props);
+  main()
   
 }
 

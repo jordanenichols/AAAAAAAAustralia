@@ -18,7 +18,7 @@ async function sh(cmd) {
 }
 
 async function main() {
-  let { stdout } = await sh('ls');
+  let { stdout } = await sh('python3 JsoCsv.py');
   for (let line of stdout.split('\n')) {
     console.log(`ls: ${line}`);
   }
