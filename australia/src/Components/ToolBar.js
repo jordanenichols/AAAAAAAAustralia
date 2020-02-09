@@ -4,12 +4,10 @@ import GraphSelection from "./GraphSelection"
 import {CSVLink} from "react-csv";
 
 function generateJSON(props) {
-  let i = 0;
   let dict = {"data": props.dataSet,
               "pitchInterval": props.pitchLevel,
               "duration": props.duration,
               "graph": props.graphSelection};
-  console.log(JSON.stringify(dict))
   return JSON.stringify(dict);
 }
 function ToolBar(props) {
