@@ -4,7 +4,6 @@ import GraphSelection from "./GraphSelection"
 // import main from "./foo.js"
 function processData(props){
   let data = generateJSON(props);
-  
 }
 
 

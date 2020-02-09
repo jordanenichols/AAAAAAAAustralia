@@ -1,9 +1,11 @@
 import React from 'react';
-
+import LineGraph from './LineGraph'
 
 function Graph(props) {
   return (
-    <div>Hello World-Graph!</div>
+    <div>
+      <LineGraph></LineGraph>
+      </div>
   );
 }
 

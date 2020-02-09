@@ -9,6 +9,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [pitchLevel, setPitchLevel] = useState([0,0]);
   const [duration,setDuration] = useState(3);
+  const [jsonString,setJSON] = useState();
   return (
     <div className = "App">
       <ToolBar 
@@ -43,9 +44,13 @@ function App() {
                 "pitchInterval": pitchLevel,
                 "duration": duration,
                 "graph": graphSelection};
+    setJSON(JSON.stringify(dict))
+    console.log(jsonString)
     return JSON.stringify(dict);
   }
 }
 
 
 export default App;
+
+
