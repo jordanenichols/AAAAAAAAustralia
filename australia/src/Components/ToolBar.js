@@ -1,14 +1,11 @@
 import React from 'react';
 import DataSet from "./DataSet"
 import GraphSelection from "./GraphSelection"
-<<<<<<< HEAD
 // import main from "./foo.js"
 function processData(props){
   let data = generateJSON(props);
   
 }
-=======
->>>>>>> 398c73b2cc367af5c7d1bdc9099db03ccc43ebf0
 
 
 function ToolBar(props) {
