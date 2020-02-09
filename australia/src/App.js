@@ -6,7 +6,7 @@ import { doEverything } from './Components/sound';
 
 function App() {
   const [dataSet, setDataSet] = useState({"x":["1,2,3"], "y":["4,6,20"]});
-  const [graphSelection, setGraphSelection] = useState("bar");
+  const [graphSelection, setGraphSelection] = useState("line");
   const [isPlaying, setIsPlaying] = useState(false);
   const [pitchLevel, setPitchLevel] = useState([300,800]);
   const [duration,setDuration] = useState(3);

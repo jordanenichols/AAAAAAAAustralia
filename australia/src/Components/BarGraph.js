@@ -49,13 +49,9 @@ function BarGraph(props) {
             legendPosition: 'middle'
         }}
         colors={{ scheme: 'oranges' }}
-        pointSize={10}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        pointLabel="y"
-        pointLabelYOffset={-12}
-        useMesh={true}
+        enablePoints = {false}
+        isInteractive = {false}
+        useMesh={false}
     />
 )
 }
