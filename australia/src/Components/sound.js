@@ -15,13 +15,18 @@ let jsonObj = {
 // let jsonObj = null;
 let sine = new Tone.Oscillator(440, "sine").toMaster();
 
+
 function eventCallback(time) {
   // console.log(time);
   sine.frequency.setValueAtTime(0, time);
   sine.start(time);
-  let data = assign_hertz(jsonObj.pitchInterval[0], jsonObj.pitchInterval[1], jsonObj.data, jsonObj.duration);
-  for (let i = 0; i < data.length; i++) {
-    sine.frequency.linearRampToValueAtTime(data[i][1], data[i][2]);
+  let data = assign_hertz(parseInt(jsonObj.pitchInterval[0],10), parseInt(jsonObj.pitchInterval[1],10), jsonObj.data, jsonObj.duration);
+  console.log("YO BUTCH", data);
+  
+  
+  for (let i = 0; i < data.hertz.length; i++) {
+    
+    sine.frequency.linearRampToValueAtTime(data.hertz[i], time+1/data.hertz.length);
   }
   sine.stop(time + jsonObj.duration);
 }
@@ -30,15 +35,14 @@ let buttonOn = false;
 
 
 export function doEverything(obj) {
-  //  console.log("test", jsonObj);
-  
+
+  jsonObj = JSON.parse(JSON.stringify(obj));
+
   if (buttonOn) {
-    console.log("yoot")
     sine.stop();
     buttonOn = false;
     Tone.Transport.stop();
   } else {
-    console.log("scoot")
     buttonOn = true;
     Tone.Transport.start();
   }
@@ -118,27 +122,14 @@ function assign_hertz(minHz, maxHz, data, time) {
   const newData = JSON.parse(JSON.stringify(data));
   let percentified_data = percentify_data(newData, time);
   let percent_min_max = percent_find_min_and_max(percentified_data);
-  console.log("percent_minMax:", percent_min_max);
-  console.log("percentified_data_final", percentified_data);
-  percentified_data.times = []
+  percentified_data.hertz = []
   let hzRange = maxHz - minHz;
   let percentRange = (percent_min_max[1]-percent_min_max[0]);
   let frac = hzRange/percentRange;
-  console.log("HZRANGE:", hzRange);
-  console.log("PERCENTRANGE=",percentRange);
-  console.log("frac = HZRANGE/PERCENTRANGE=", frac);
-  console.log("MINPERCENT:",percent_min_max[0]);
-    console.log("MINHZ:", minHz);
   for (let i = 0; i < newData.y.length; i++) { //replaces percentified data with hertz values. Problem if data set only length of 2
-    console.log("i=",i);
     let diff = parseFloat(percentified_data.percentages[i],10) - percent_min_max[0];
-    console.log("diff = percentified_data.percentages[",i,"] - MINPERCENT = ", diff);
     let final = (minHz + (diff * frac))
-    console.log("minHz", minHz);
-    console.log("diff * frac = ", diff * frac);
-    console.log("final = MINHZ + (diff * frac) = ", final );
-
-    percentified_data.times.push(final);
+    percentified_data.hertz.push(final);
   }
   console.log("AKK", percentified_data);
   return percentified_data;
