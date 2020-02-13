@@ -17,7 +17,7 @@ function ToolBar(props) {
       <GraphSelection 
         graphSelection={props.graphSelection}
         setGraphSelection={props.setGraphSelection}/>
-      <button className="playButton" onClick = {() => props.processData(props)}>PLAY</button>
+      <button className="playButton" onClick = {() => props.processData()}>PLAY</button>
     </div>
     
   );

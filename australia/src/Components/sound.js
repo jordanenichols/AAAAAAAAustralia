@@ -6,7 +6,6 @@ let sine = new Tone.Oscillator(440, "sine").toMaster();
 function Sound(props) {
   const [jsonString, setJsonString] = useState({...props.jsonString});
   const [buttonOn, setButtonOn] = useState(false)
-
   
   // if (buttonOn) {
   //   sine.stop();
@@ -40,7 +39,6 @@ function eventCallback(time,jsonObj) {
 
 //Sets the user defined minimum Hertz and maximum Hertz values in the data file
 function assignHertz(minHz, maxHz, oldData, time) {
-
   const data = {...oldData};
   const percentifiedData = percentifyData(data, time);
   const results = minAndMax(percentifiedData);
@@ -60,7 +58,7 @@ function assignHertz(minHz, maxHz, oldData, time) {
   }
 
   let timedData = getTimes(percentifiedData, time);
-  console.log("timedData: ", timedData);
+  
   return timedData;
 
 }
@@ -85,20 +83,15 @@ function percentifyData(oldData) {
 
 
 function getTimes(data,time) {
+ 
   const [min, max] = findMinMaxX(data)
   const range = max -min;
-  console.log("range", range)
   data.times = [];
   data.times.push(0)
   for(let i = 1; i < data.x.length; i++) {
     const interval = data.x[i] - data.x[i-1];
     const previous = data.times[i-1]
     const totalTime = (interval/range)*time
-    // console.log("current x: ", data.x[i])
-    // console.log("previous x: ", data.x[i-1])
-    // console.log("interval: ", interval)
-    // console.log("previous x time: ", data.times[i-1])
-    // console.log("TotalTime: ",totalTime)
     data.times.push(previous+totalTime);
   }
   return data;
@@ -107,21 +100,14 @@ function getTimes(data,time) {
 function findMinMaxX(data) {
   let min = parseFloat(data.x[0]);
   let max = parseFloat(data.x[0]);
-  console.log("Min: ", min)
-  console.log("Max: ", max)
   for (let i = 1; i < data.x.length; i++) { //problem if data has only one value
-    console.log("current value: ", data.x[i])
     const current = parseFloat(data.x[i])
     if (max < current) { // gets the maximum
       max = current;
-      console.log("new max")
     }
     if (min > current) {
       min = current;
-      console.log("new min")
     }
-    console.log("Min: ", min)
-    console.log("Max: ", max)
   }
   return [parseFloat(min,10), parseFloat(max,10)];
 }

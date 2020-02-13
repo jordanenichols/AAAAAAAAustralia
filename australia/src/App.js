@@ -10,7 +10,7 @@ function App() {
   const [graphSelection, setGraphSelection] = useState("line");
   const [isPlaying, setIsPlaying] = useState(false);
   const [pitchLevel, setPitchLevel] = useState([300,800]);
-  const [duration,setDuration] = useState(3);
+  const [duration,setDuration] = useState(5);
   const [jsonString,setJSON] = useState();
 
   if(isPlaying == true){
@@ -70,14 +70,37 @@ function App() {
   );
 
   function processData(){
-    generateJSON();
+    orderDataSet();
     setIsPlaying(true);
   }
+
   
-  function generateJSON() {
-    let dict = {"data": dataSet,
-                "x":dataSet.x,
-                "y":dataSet.y,
+  function orderDataSet(){
+    let xArr = [...dataSet.x]
+    let yArr = [...dataSet.y]
+    let i;
+    for(i = 0; i < dataSet.x.length; i++){
+      let minValue = parseInt(xArr[i]);
+      let swapIndex = i;
+      for(let j = i+1; j < dataSet.x.length; j++){
+        if(minValue > parseInt(xArr[j]))
+        {
+          minValue = parseInt(xArr[j])
+          swapIndex = j
+
+          let temp = xArr[i]
+          xArr[i] = xArr[swapIndex]
+          xArr[swapIndex] = temp
+      
+          let temp2 = yArr[i]
+          yArr[i] = yArr[swapIndex]
+          yArr[swapIndex] = temp2
+        }
+      }
+    }
+    let dict = {"data": {"x":xArr, "y":yArr},
+                "x":xArr,
+                "y":yArr,
                 "pitchInterval": pitchLevel,
                 "duration": duration,
                 "graph": graphSelection};

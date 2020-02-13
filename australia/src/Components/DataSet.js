@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 
 function toDataSet(props,event, row, col) {
+  
   const currentTextBox = event.target;
   const currentVal = currentTextBox.value;
   // update contents of dataSet
@@ -10,20 +11,18 @@ function toDataSet(props,event, row, col) {
     props.dataSet.y[row] = currentVal;
   }
   props.setDataSet({"x":props.dataSet.x, "y":props.dataSet.y});
-
 }
 
 function toPitchLevel(props, event, bound) {
   let input = event.target.value;
   let arr = props.pitchLevel;
-  arr[bound] = input;
+  arr[bound] = parseInt(input);
   props.setPitchLevel(arr);
 }
 
-function toDuration(props, event) {
-  let input = event.target.value;
-  props.setDuration(input);
-  console.log("updated duration: ",props.duration);
+ function toDuration(props, event) {
+  const input = event.target.value;
+  props.setDuration(parseInt(input))
 }
 function appendDataSet(props) {
   let current = props.dataSet;
@@ -52,7 +51,7 @@ function DataSet(props) {
       <label>Min-Max Pitch</label>
       <div className="pitchBox">
         <input placeholder="300" className="inputBox"  onChange={(event) => toPitchLevel(props, event, 0)}/>
-        <input placeholder="500" className="inputBox"  onChange={(event) => toPitchLevel(props, event, 1)}/>
+        <input placeholder="800" className="inputBox"  onChange={(event) => toPitchLevel(props, event, 1)}/>
         </div>
         <label>Duration (sec):
           <input placeholder="3" onChange={(event) => toDuration(props, event)} className="duration"/>

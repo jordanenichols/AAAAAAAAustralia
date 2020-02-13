@@ -6,7 +6,7 @@ import React from 'react';
     for(let i = 0; i < jsonString.x.length;i++){
         dict.push({id:jsonString.x[i].toString(),label:jsonString.x[i].toString(),value:jsonString.y[i]})
     }
-    return [dict]
+    return dict;
 }
 
 function PieChart(props) {
