@@ -2,12 +2,10 @@ import React from 'react';
  import { ResponsiveLine } from '@nivo/line'
 
  function toGraphJSON(jsonString) {
-    console.log(jsonString)
     let dict = [];
     for(let i = 0; i < jsonString.x.length;i++){
         dict.push({x:jsonString.x[i],y:jsonString.y[i]})
     }
-    console.log(dict)
     return [{"data":dict}]
 }
 

@@ -2,12 +2,10 @@ import React from 'react';
  import { ResponsiveLine } from '@nivo/line'
 
 function toGraphJSON(jsonString) {
-    console.log(jsonString)
     let dict = [];
     for(let i = 0; i < jsonString.x.length;i++){
         dict.push({x:jsonString.x[i],y:jsonString.y[i]})
     }
-    console.log(dict)
     return [{"data":dict}]
 }
 
@@ -17,7 +15,7 @@ function LineGraph(props) {
         <ResponsiveLine
             data={dat}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-            xScale={{ type: 'point' }}
+            xScale={{ type: 'linear' }}
             yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
             axisTop={null}
             axisRight={null}

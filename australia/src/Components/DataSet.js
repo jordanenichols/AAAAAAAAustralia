@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 function toDataSet(props,event, row, col) {
-  // console.log("row: ",row);
-  // console.log("col: ",col);
   const currentTextBox = event.target;
   const currentVal = currentTextBox.value;
   // update contents of dataSet
@@ -13,7 +11,6 @@ function toDataSet(props,event, row, col) {
   }
   props.setDataSet({"x":props.dataSet.x, "y":props.dataSet.y});
 
-  console.log("after calling toDataSet",props.dataSet)
 }
 
 function toPitchLevel(props, event, bound) {
@@ -21,17 +18,15 @@ function toPitchLevel(props, event, bound) {
   let arr = props.pitchLevel;
   arr[bound] = input;
   props.setPitchLevel(arr);
-  console.log("dis the pitch",props.pitchLevel)
 }
 
 function toDuration(props, event) {
   let input = event.target.value;
   props.setDuration(input);
-  console.log(props.duration);
+  console.log("updated duration: ",props.duration);
 }
 function appendDataSet(props) {
   let current = props.dataSet;
-  console.log("dis what we workin with", current);
   current.x.push("woo");
   current.y.push(97);
   props.setDataSet(current);
