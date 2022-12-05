@@ -1133,6 +1133,23 @@
     lodash "^4.17.11"
     react-motion "^0.5.2"
 
+"@nivo/bar@^0.61.1":
+  version "0.61.1"
+  resolved "https://registry.yarnpkg.com/@nivo/bar/-/bar-0.61.1.tgz#c29579b4018954a1c7a93d2d365c7878de4396f6"
+  integrity sha512-MYdjeFt6HqEyIBFwbVHKPjpw8+DPirAZwJDZi7dPXT0F7WcwJOnRITlRHhmQEGq5u71h26UN+M0z/ZQkB54mvw==
+  dependencies:
+    "@nivo/annotations" "0.61.0"
+    "@nivo/axes" "0.61.0"
+    "@nivo/colors" "0.61.0"
+    "@nivo/core" "0.61.0"
+    "@nivo/legends" "0.61.1"
+    "@nivo/tooltip" "0.61.0"
+    d3-scale "^3.0.0"
+    d3-shape "^1.2.2"
+    lodash "^4.17.11"
+    react-motion "^0.5.2"
+    recompose "^0.30.0"
+
 "@nivo/colors@0.61.0":
   version "0.61.0"
   resolved "https://registry.yarnpkg.com/@nivo/colors/-/colors-0.61.0.tgz#5af2a6d8b1d22c786950cc9fb07c216a80a541ff"
@@ -1189,6 +1206,20 @@
     d3-shape "^1.3.5"
     lodash "^4.17.11"
     react-motion "^0.5.2"
+
+"@nivo/pie@^0.61.1":
+  version "0.61.1"
+  resolved "https://registry.yarnpkg.com/@nivo/pie/-/pie-0.61.1.tgz#c29e683f0e910147282186be4c4693bee545f594"
+  integrity sha512-3xmYrB/rccJ6f5AtckhIm51Bj7IVYomeCJsM1vK07wzOS+ZpvJRODokzXSNvp7NkMl3jrqCcGriLhSg3mf9+yA==
+  dependencies:
+    "@nivo/colors" "0.61.0"
+    "@nivo/core" "0.61.0"
+    "@nivo/legends" "0.61.1"
+    "@nivo/tooltip" "0.61.0"
+    d3-shape "^1.3.5"
+    lodash "^4.17.11"
+    react-motion "^0.5.2"
+    recompose "^0.30.0"
 
 "@nivo/scales@0.61.0":
   version "0.61.0"
@@ -3707,7 +3738,7 @@ d3-scale@^3.0.0:
     d3-time "1"
     d3-time-format "2"
 
-d3-shape@^1.2.0, d3-shape@^1.3.5:
+d3-shape@^1.2.0, d3-shape@^1.2.2, d3-shape@^1.3.5:
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.7.tgz#df63801be07bc986bc54f63789b4fe502992b5d7"
   integrity sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==
@@ -3787,9 +3818,9 @@ decamelize@^1.2.0:
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 decompress-response@^4.2.0:
   version "4.2.1"
